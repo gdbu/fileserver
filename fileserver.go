@@ -1,13 +1,13 @@
 package fileserver
 
 import (
+	"errors"
 	"io"
 	"net/http"
 	"path/filepath"
 
 	"github.com/gdbu/atoms"
 	"github.com/gdbu/filecacher"
-	"github.com/hatchify/errors"
 )
 
 var (
@@ -69,7 +69,7 @@ func (f *FileServer) Serve(key string, res http.ResponseWriter, req *http.Reques
 // Close will close an instance of fileserver
 func (f *FileServer) Close() (err error) {
 	if !f.closed.Set(true) {
-		return errors.ErrIsClosed
+		return errors.New("is already closed")
 	}
 
 	return f.fc.Close()
