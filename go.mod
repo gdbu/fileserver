@@ -1,4 +1,4 @@
-module github.com/hatchify/fileserver
+module github.com/gdbu/fileserver
 
 go 1.25
 
